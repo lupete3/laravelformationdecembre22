@@ -1,6 +1,7 @@
 @extends('./layouts/app')
 
 @section('app-content')
+    <h2>Formulaire</h2>
     @if($errors)
         @foreach ($errors->all() as $error)
             <li>{{$error}}</li>   
