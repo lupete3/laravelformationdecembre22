@@ -1,7 +1,6 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
-use App\Http\Controllers\RouteController;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -19,14 +18,6 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-Route::get('/test', function(){
-    echo "Je suis une page de test";
-});
-
-Route::get('/accueil/{name}',[RouteController::class, 'accueil'] );
-
-Route::get('/form',[RouteController::class, 'afficher'] );
-Route::post('/form',[RouteController::class, 'formValidate'] );
-
 //Route Article
+Route::get('/article',[ArticleController::class, 'index'] );
 Route::post('/articles', [ArticleController::class, 'store']);
