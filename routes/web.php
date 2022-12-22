@@ -23,3 +23,6 @@ Route::get('/test', function(){
 });
 
 Route::get('/accueil/{name}',[RouteController::class, 'accueil'] );
+
+Route::get('/form',[RouteController::class, 'afficher'] );
+Route::post('/form',[RouteController::class, 'formValidate'] );
