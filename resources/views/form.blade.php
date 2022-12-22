@@ -1,18 +1,25 @@
 @extends('./layouts/app')
 
 @section('app-content')
-    <h2>Formulaire</h2>
-    @if($errors)
-        @foreach ($errors->all() as $error)
-            <li>{{$error}}</li>   
-        @endforeach
-    @endif
-    <form action="/form" method="post">
-        @method('post')
-        @csrf
-        <input type="text" name="name" placeholder="Name" value="{{old('name')}}">
-        <input type="email" name="email" placeholder="Email" value="{{old('email')}}">
-        <input type="submit" name="" value="Valider" id="">
-    </form>
+   .<div class="card">
+    <div class="card-body">
+        @if($errors)
+            @foreach ($errors->all() as $error)
+                <div class="alert alert-info">{{$error}}</div>   
+            @endforeach
+        @endif
+        <h5 class="card-title">Ajouter un article</h5>
+        <form action="/articles" method="post" class="form-product">
+            @method('post')
+            @csrf
+            <div class="form-group">
+                <label for="titre">Titre de l'article</label>
+                <input type="text" id="titre" name="titre" class="form-control" placeholder="Titre Article" value="{{old('name')}}">
+            </div>
+            
+            <input type="submit"  class="btn btn-success" name="" value="Enregistrer" id="">
+        </form>
+    </div>
+   </div>
 
 @endsection
