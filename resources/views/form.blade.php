@@ -3,11 +3,9 @@
 @section('app-content')
    .<div class="card">
     <div class="card-body">
-        {{-- @if($errors)
-            @foreach ($errors->all() as $error)
-                <div class="alert alert-info">{{$error}}</div>   
-            @endforeach
-        @endif  --}}
+        @if(session()->has('success'))
+            <div class="alert alert-success">{{ session()->get('success') }}</div>   
+        @endif 
         <h5 class="card-title">Ajouter un article</h5>
         <form action="/articles" method="post" class="form-product">
             @method('post')
