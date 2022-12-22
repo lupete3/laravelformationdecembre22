@@ -19,7 +19,8 @@ class ArticleController extends Controller
 
     public function store(Article $article, ArticleRequest $request){
         Article::create([
-            'titre' => $request->titre
+            'titre' => $request->titre,
+            'description' => $request->description
         ]);
 
         return redirect()->back()->with('success', 'l\'article est ajouté avec succès');

@@ -21,6 +21,15 @@
                               </div>
                           @enderror
                       </div>
+                      <div class="form-group">
+                          <label for="description">Description de l'article</label>
+                          <textarea name="description" class="form-control" id="description" cols="5" rows="4">{{old('description')}}</textarea>
+                          @error('description')
+                              <div class="text-danger">
+                                  {{$message}}
+                              </div>
+                          @enderror
+                      </div>
                       
                       <input type="submit"  class="btn btn-success" name="" value="Enregistrer" id="">
                   </form>
@@ -35,16 +44,18 @@
                      <thead>
                         <th>No</th>
                         <th>Nom Article</th>
+                        <th>Description Article</th>
                      </thead>
                      <tbody>
                         @forelse ($articles as $article)
                         <tr>
                             <td>{{$article->id}}</td>
                             <td>{{$article->titre}}</td>
+                            <td>{{$article->description}}</td>
                         </tr>
                         @empty
                         <tr>
-                            <td colspan="2">Aucun article trouvé</td>
+                            <td colspan="3">Aucun article trouvé</td>
                         </tr> 
                         @endforelse
                      </tbody>
