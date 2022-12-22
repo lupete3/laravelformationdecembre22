@@ -29,6 +29,8 @@ class ArticleController extends Controller
     //Méthode pour récuperer un seul article dans la base de données 
     public function show($id){
         $articles = Article::find($id);
-        dd($articles);
+        return view('articles.show', [
+            'article' => $articles
+        ]);
     }
 }

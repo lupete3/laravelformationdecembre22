@@ -39,10 +39,14 @@
         <div class="col-md-8 mt-2">
             <h4>Liste des articles</h4>
             @forelse ($articles as $article)
-                <li class="list-group-item mt-2">
-                    <div><a href="/articles/{{$article->id}}" class="text-title">{{$article->titre}}</a></div>
-                    <div>{{$article->description}}</div>
-                </li>
+                
+                <div class="card mt-2">
+                    <div class="card-body">
+                        <h5 class="card-title"><a href="/articles/{{$article->id}}" >{{$article->titre}}</a></h5>
+                        <hr>
+                        <p class="card-text">{{$article->description}}</p>
+                    </div>
+                </div>
             @empty
                 Aucun article trouvé</td>
             @endforelse
