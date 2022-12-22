@@ -25,4 +25,10 @@ class ArticleController extends Controller
 
         return redirect()->back()->with('success', 'l\'article est ajouté avec succès');
     }
+
+    //Méthode pour récuperer un seul article dans la base de données 
+    public function show($id){
+        $articles = Article::find($id);
+        dd($articles);
+    }
 }

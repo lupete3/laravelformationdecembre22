@@ -36,32 +36,16 @@
                 </div>
               </div>
         </div>
-        <div class="col-md-8">
-            <div class="card mt-2">
-                <div class="card-body">
-                   <h5 class="card-title"> Liste des articles </h5>
-                   <table class="table table-sm responsive">
-                     <thead>
-                        <th>No</th>
-                        <th>Nom Article</th>
-                        <th>Description Article</th>
-                     </thead>
-                     <tbody>
-                        @forelse ($articles as $article)
-                        <tr>
-                            <td>{{$article->id}}</td>
-                            <td>{{$article->titre}}</td>
-                            <td>{{$article->description}}</td>
-                        </tr>
-                        @empty
-                        <tr>
-                            <td colspan="3">Aucun article trouvé</td>
-                        </tr> 
-                        @endforelse
-                     </tbody>
-                   </table>
-                </div>
-            </div>
+        <div class="col-md-8 mt-2">
+            <h4>Liste des articles</h4>
+            @forelse ($articles as $article)
+                <li class="list-group-item mt-2">
+                    <div><a href="/articles/{{$article->id}}" class="text-title">{{$article->titre}}</a></div>
+                    <div>{{$article->description}}</div>
+                </li>
+            @empty
+                Aucun article trouvé</td>
+            @endforelse
         </div>
     </div>
 
