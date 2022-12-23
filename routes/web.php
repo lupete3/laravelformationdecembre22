@@ -24,3 +24,5 @@ Route::post('/articles', [ArticleController::class, 'store']);
 
 //Methode pour récupérer un seul article
 Route::get('/articles/{article}', [ArticleController::class, 'show']);
+
+Route::get('/articles/{article}/edit', [ArticleController::class, 'showEdit']);

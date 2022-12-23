@@ -33,4 +33,11 @@ class ArticleController extends Controller
             'article' => $article
         ]);
     }
+
+    //Methode pour afficher le formulaire de modification d'un article
+    public function showEdit(Article $article){
+        return view('articles.edit',[
+            'article' => $article
+        ]);
+    }
 }

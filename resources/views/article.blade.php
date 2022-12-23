@@ -34,7 +34,7 @@
                       <input type="submit"  class="btn btn-success" name="" value="Enregistrer" id="">
                   </form>
                 </div>
-              </div>
+            </div>
         </div>
         <div class="col-md-8 mt-2">
             <h4>Liste des articles</h4>

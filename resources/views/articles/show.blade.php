@@ -11,7 +11,7 @@
             <p class="card-text">{{$article->description}}</p>
         </div>
         <div class="card-footer">
-            <button class="btn btn-success">Modifier</button>
+            <a href="/articles/{{$article->id}}/edit" class="btn btn-success">Modifier</a>
             <button class="btn btn-danger">Supprimer</button>
             
         </div>
