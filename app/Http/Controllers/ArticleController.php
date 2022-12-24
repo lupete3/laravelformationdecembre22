@@ -40,4 +40,19 @@ class ArticleController extends Controller
             'article' => $article
         ]);
     }
+
+    //Méthode pour modifier un article dans la base de données 
+    public function update(Article $article, ArticleRequest $request){
+
+        // La variable article permet de récuoérer l'article dont ont souhaite appliqué la maj
+
+        // La variable resuest récupère les données envoyées dans le le formulaire
+
+        $article->titre = $request->titre;
+        $article->description = $request->description;
+
+        $article->save();
+
+        return redirect('/article')->with('success', 'Article modifié avec succès');
+    }
 }

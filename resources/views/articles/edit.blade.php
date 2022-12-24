@@ -3,12 +3,13 @@
 @section('app-content')
     <div class="card">
         <div class="card-body">
+            <a href="/article" class="btn btn-sm btn-dark">Retour</a>
           @if(session()->has('success'))
               <div class="alert alert-success">{{ session()->get('success') }}</div>   
           @endif 
           <h5 class="card-title">Modification article</h5>
-          <form action="/articles" method="post" class="form-product">
-              @method('post')
+          <form action="/articles/{{$article->id}}/update" method="post" class="form-product">
+              @method('put')
               @csrf
               <div class="form-group">
                   <label for="titre">Titre de l'article</label>

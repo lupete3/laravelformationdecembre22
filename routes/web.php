@@ -22,7 +22,10 @@ Route::get('/', function () {
 Route::get('/article',[ArticleController::class, 'index'] );
 Route::post('/articles', [ArticleController::class, 'store']);
 
-//Methode pour récupérer un seul article
+//Route pour récupérer un seul article
 Route::get('/articles/{article}', [ArticleController::class, 'show']);
-
+//Route pour affhicher dans le formulaire l'article recuperé
 Route::get('/articles/{article}/edit', [ArticleController::class, 'showEdit']);
+// Route pour modifier un article
+Route::put('/articles/{article}/update', [ArticleController::class, 'update']);
+
