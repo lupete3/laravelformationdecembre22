@@ -20,18 +20,20 @@ Route::get('/', function () {
 });
 
 //Route Article
-Route::get('/article',[ArticleController::class, 'index'] );
-Route::post('/articles', [ArticleController::class, 'store']);
 
 Route::prefix('articles')->group(function(){
+  //Route pour afficher tous les articles de la base de données
+  Route::get('/',[ArticleController::class, 'index'] )->name('articles.all');
+  //Route pour enregistrer un article dans la base de données
+  Route::post('/', [ArticleController::class, 'store'])->name('articles.save');
   //Route pour récupérer un seul article
-  Route::get('/{article}', [ArticleController::class, 'show']);
+  Route::get('/{article}', [ArticleController::class, 'show'])->name('articles.single');
   //Route pour affhicher dans le formulaire l'article recuperé
-  Route::get('/{article}/edit', [ArticleController::class, 'showEdit']);
+  Route::get('/{article}/edit', [ArticleController::class, 'showEdit'])->name('articles.showEdit');
   // Route pour modifier un article
-  Route::put('/{article}/update', [ArticleController::class, 'update']);
+  Route::put('/{article}/update', [ArticleController::class, 'update'])->name('articles.edit');
   //Route pour supprimer un article dans la base de données 
-  Route::delete('/{article}/delete', [ArticleController::class, 'delete']);
+  Route::delete('/{article}/delete', [ArticleController::class, 'delete'])->name('articles.delete');
 });
 
 

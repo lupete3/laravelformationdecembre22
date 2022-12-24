@@ -9,7 +9,7 @@
                       <div class="alert alert-success">{{ session()->get('success') }}</div>   
                   @endif 
                   <h5 class="card-title">Ajouter un article</h5>
-                  <form action="/articles" method="post" class="form-product">
+                  <form action="{{ route('articles.save') }} " method="post" class="form-product">
                       @method('post')
                       @csrf
                       <div class="form-group">
@@ -42,7 +42,7 @@
                 
                 <div class="card mt-2">
                     <div class="card-body">
-                        <h5 class="card-title"><a href="/articles/{{$article->id}}" >{{$article->titre}}</a></h5>
+                        <h5 class="card-title"><a href="{{ route('articles.single',$article->id) }} " >{{$article->titre}}</a></h5>
                         <hr>
                         <p class="card-text">{{$article->description}}</p>
                     </div>

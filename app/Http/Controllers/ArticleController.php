@@ -53,12 +53,12 @@ class ArticleController extends Controller
 
         $article->save();
 
-        return redirect('/article')->with('success', 'Article modifié avec succès');
+        return redirect(route('articles.all'))->with('success', 'Article modifié avec succès');
     }
 
     public function delete(Article $article, Request $request){
        $article->delete();
 
-       return redirect('/article')->with('success', 'Article supperimé avec succès');
+       return redirect(route('articles.all'))->with('success', 'Article supperimé avec succès');
     }
 }
