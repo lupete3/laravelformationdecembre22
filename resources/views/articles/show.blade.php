@@ -23,13 +23,13 @@
     <div class="modal-dialog">
       <div class="modal-content">
         <div class="modal-header">
-          <h5 class="modal-title" id="exampleModalLabel">Modal title</h5>
+          <h5 class="modal-title" id="exampleModalLabel">Suppression Article</h5>
           <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
         </div>
         <div class="modal-body text-center">
             <form method='post' action='/articles/{{$article->id}}/delete'>
-                @csrf;
-                @method('delete');
+                @csrf
+                @method('delete')
           Voulez-vous supprimer cet article ?
         </div>
         <div class="modal-footer">

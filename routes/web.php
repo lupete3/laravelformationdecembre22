@@ -23,12 +23,15 @@ Route::get('/', function () {
 Route::get('/article',[ArticleController::class, 'index'] );
 Route::post('/articles', [ArticleController::class, 'store']);
 
-//Route pour récupérer un seul article
-Route::get('/articles/{article}', [ArticleController::class, 'show']);
-//Route pour affhicher dans le formulaire l'article recuperé
-Route::get('/articles/{article}/edit', [ArticleController::class, 'showEdit']);
-// Route pour modifier un article
-Route::put('/articles/{article}/update', [ArticleController::class, 'update']);
-//Route pour supprimer un article dans la base de données 
-Route::delete('/articles/{article}/delete', [ArticleController::class, 'delete']);
+Route::prefix('articles')->group(function(){
+  //Route pour récupérer un seul article
+  Route::get('/{article}', [ArticleController::class, 'show']);
+  //Route pour affhicher dans le formulaire l'article recuperé
+  Route::get('/{article}/edit', [ArticleController::class, 'showEdit']);
+  // Route pour modifier un article
+  Route::put('/{article}/update', [ArticleController::class, 'update']);
+  //Route pour supprimer un article dans la base de données 
+  Route::delete('/{article}/delete', [ArticleController::class, 'delete']);
+});
+
 
