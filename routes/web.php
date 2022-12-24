@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Requests\ArticleRequest;
 use Illuminate\Support\Facades\Route;
 
 /*
@@ -28,4 +29,6 @@ Route::get('/articles/{article}', [ArticleController::class, 'show']);
 Route::get('/articles/{article}/edit', [ArticleController::class, 'showEdit']);
 // Route pour modifier un article
 Route::put('/articles/{article}/update', [ArticleController::class, 'update']);
+//Route pour supprimer un article dans la base de données 
+Route::delete('/articles/{article}/delete', [ArticleController::class, 'delete']);
 

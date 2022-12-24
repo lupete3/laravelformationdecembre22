@@ -55,4 +55,10 @@ class ArticleController extends Controller
 
         return redirect('/article')->with('success', 'Article modifié avec succès');
     }
+
+    public function delete(Article $article, Request $request){
+       $article->delete();
+
+       return redirect('/article')->with('success', 'Article supperimé avec succès');
+    }
 }
