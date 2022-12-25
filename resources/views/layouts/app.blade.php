@@ -21,12 +21,19 @@
                   <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{ route('articles.all')}}">Accueil</a>
                   </li>
-                  <li class="nav-item">
-                    <a class="nav-link" href="#">Mes Articles</a>
-                  </li>
+                  @if(Auth::user()->id)
+                    <li class="nav-item">
+                      <a class="nav-link" href="#">Mes Articles </a>
+                    </li>
+                  @endif
                 </ul>
                 <form class="d-flex">
-                    <a href="{{ route('registration') }}" class="btn btn-outline-success">Mon compte</a>
+                  @if(Auth::user()->id)
+                    <a href="{{ route('registration') }}" class="btn btn-outline-success">Déconnexion</a>
+                    @else
+                      <a href="{{ route('registration') }}" class="btn btn-outline-success">Connexion</a>
+                  @endif
+                    
                 </form>
               </div>
             </div>

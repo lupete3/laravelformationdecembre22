@@ -1,4 +1,4 @@
-@extends('./layouts/app')
+@extends('./../layouts/app')
 
 @section('app-content')
 <div class="row ">
@@ -6,22 +6,13 @@
     <div class="col-md-6 mt-2">
         <div class="card mt-2">
             <div class="card-body">
-              @if(session()->has('success'))
-                  <div class="alert alert-success">{{ session()->get('success') }}</div>   
+              @if(session()->has('error'))
+                  <div class="alert alert-danger">{{ session()->get('error') }}</div>   
               @endif 
-              <h5 class="card-title">Création du compte</h5>
-              <form action="{{ route('registration') }} " method="post" class="form-product">
+              <h5 class="card-title">Connexion</h5>
+              <form action="{{ route('login') }} " method="post" class="form-product">
                   @method('post')
                   @csrf
-                  <div class="form-group">
-                      <label for="nom">Votre Nom</label>
-                      <input type="text" id="nom" name="nom" class="form-control mt-1" placeholder="Votre nom" value="{{old('nom')}}">
-                      @error('nom')
-                          <div class="text-danger">
-                              {{$message}}
-                          </div>
-                      @enderror
-                  </div>
                   <div class="form-group">
                       <label for="email">Votre Email</label>
                       <input type="email" id="email" name="email" class="form-control mt-1" placeholder="Votre Email" value="{{old('email')}}">
@@ -41,13 +32,12 @@
                       @enderror
                   </div>
                   
-                  <input type="submit"  class="btn btn-success" name="" value="Inscription" id="">
-                  <p class="text-center">Avez-vous un compte ? <a href="{{ route('login') }}">Connectez-vous</a></p>
+                  <input type="submit"  class="btn btn-success" name="" value="Connexion" id="">
+                  <p class="text-center">Vous n'avez-vous pas un compte ? <a href="{{ route('registration') }}">Créer ici</a></p>
               </form>
             </div>
         </div>
     </div>
     
-</div>
-    
+</div>  
 @endsection

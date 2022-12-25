@@ -2,9 +2,11 @@
 
 namespace App\Http\Controllers;
 
+use App\Http\Requests\UserLoginRequest;
 use App\Http\Requests\UserRequest;
-use Illuminate\Http\Request;
 use App\Models\User;
+use Illuminate\Http\Request;
+use Illuminate\Support\Facades\Auth;
 use Illuminate\Support\Facades\Hash;
 
 class UserController extends Controller
@@ -26,5 +28,28 @@ class UserController extends Controller
       $user->save();      
 
       return redirect()->back()->with('success', 'Votre compte est crée avec succès');
+    }
+
+    public function showLoginForm(){
+        return view('users.login');
+    }
+
+    public function login(Request $request){
+
+      $credetials = $request->validate([
+        'email' => 'required|email',
+        'password' => 'required|min:3'
+      ]);
+        if(Auth::attempt($credetials)){
+          $request->session()->regenerate();
+
+          return redirect()->intended(route('dashboard'));
+        }else{
+          return redirect()->back()->with('error','Login ou mot de passe incorrect');
+        }
+    }
+
+    public function dashboard(){
+      return view('users.dashboard');
     }
 }
