@@ -8,6 +8,7 @@ use Illuminate\Http\Request;
 
 class ArticleController extends Controller
 {
+    // Méthode de récupération de tous les articles dans la base de données
     public function index(){
 
         $articles = Article::all();
@@ -17,6 +18,7 @@ class ArticleController extends Controller
         ]);
     }
 
+    // Méthode d'enregistrement d'un articla dans la base de odonnées 
     public function store(Article $article, ArticleRequest $request){
         Article::create([
             'titre' => $request->titre,
@@ -56,6 +58,7 @@ class ArticleController extends Controller
         return redirect(route('articles.all'))->with('success', 'Article modifié avec succès');
     }
 
+    // Méthode pour supprimer un article dans la base de données
     public function delete(Article $article, Request $request){
        $article->delete();
 

@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ArticleController;
+use App\Http\Controllers\UserController;
 use App\Http\Requests\ArticleRequest;
 use Illuminate\Support\Facades\Route;
 
@@ -18,6 +19,11 @@ use Illuminate\Support\Facades\Route;
 Route::get('/', function () {
     return view('welcome');
 });
+
+// Route Register
+Route::get('/register', [UserController::class, 'showForm'])->name('registration');
+//Route pour enregistrer un user dans la base de donnees
+Route::post('/register', [UserController::class, 'saveUser'])->name('registration');
 
 //Route Article
 

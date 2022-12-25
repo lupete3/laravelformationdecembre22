@@ -26,7 +26,7 @@
                   </li>
                 </ul>
                 <form class="d-flex">
-                  <button class="btn btn-outline-success" type="submit">Mon compte</button>
+                    <a href="{{ route('registration') }}" class="btn btn-outline-success">Mon compte</a>
                 </form>
               </div>
             </div>
