@@ -21,18 +21,19 @@
                   <li class="nav-item">
                     <a class="nav-link active" aria-current="page" href="{{ route('articles.all')}}">Accueil</a>
                   </li>
-                  @if(Auth::user()->id)
-                    <li class="nav-item">
+                  @auth
+                      <li class="nav-item">
                       <a class="nav-link" href="#">Mes Articles </a>
                     </li>
-                  @endif
+                  @endauth
+                    
                 </ul>
                 <form class="d-flex">
-                  @if(Auth::user()->id)
+                  @auth
                     <a href="{{ route('registration') }}" class="btn btn-outline-success">Déconnexion</a>
                     @else
                       <a href="{{ route('registration') }}" class="btn btn-outline-success">Connexion</a>
-                  @endif
+                  @endauth
                     
                 </form>
               </div>

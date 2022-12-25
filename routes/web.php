@@ -31,24 +31,27 @@ Route::get('/login', [UserController::class, 'showLoginForm'])->name('login');
 //Route pour connecter un utilisateur
 Route::post('/login', [UserController::class, 'login'])->name('login');
 
-//Route de la session de l'utilisateur
-Route::get('dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+Route::middleware(['auth'])->group(function(){
+  //Route de la session de l'utilisateur
+  Route::get('dashboard', [UserController::class, 'dashboard'])->name('dashboard');
 
-//Route Article
-
-Route::prefix('articles')->group(function(){
-  //Route pour afficher tous les articles de la base de données
-  Route::get('/',[ArticleController::class, 'index'] )->name('articles.all');
-  //Route pour enregistrer un article dans la base de données
-  Route::post('/', [ArticleController::class, 'store'])->name('articles.save');
-  //Route pour récupérer un seul article
-  Route::get('/{article}', [ArticleController::class, 'show'])->name('articles.single');
-  //Route pour affhicher dans le formulaire l'article recuperé
-  Route::get('/{article}/edit', [ArticleController::class, 'showEdit'])->name('articles.showEdit');
-  // Route pour modifier un article
-  Route::put('/{article}/update', [ArticleController::class, 'update'])->name('articles.edit');
-  //Route pour supprimer un article dans la base de données 
-  Route::delete('/{article}/delete', [ArticleController::class, 'delete'])->name('articles.delete');
+  //Routes Article
+  Route::prefix('articles')->group(function(){
+    //Route pour afficher tous les articles de la base de données
+    Route::get('/',[ArticleController::class, 'index'] )->name('articles.all')->withoutMiddleware('auth');
+    //Route pour enregistrer un article dans la base de données
+    Route::post('/', [ArticleController::class, 'store'])->name('articles.save');
+    //Route pour récupérer un seul article
+    Route::get('/{article}', [ArticleController::class, 'show'])->name('articles.single')->withoutMiddleware('auth');
+    //Route pour affhicher dans le formulaire l'article recuperé
+    Route::get('/{article}/edit', [ArticleController::class, 'showEdit'])->name('articles.showEdit');
+    // Route pour modifier un article
+    Route::put('/{article}/update', [ArticleController::class, 'update'])->name('articles.edit');
+    //Route pour supprimer un article dans la base de données 
+    Route::delete('/{article}/delete', [ArticleController::class, 'delete'])->name('articles.delete');
+  });
 });
+
+
 
 
