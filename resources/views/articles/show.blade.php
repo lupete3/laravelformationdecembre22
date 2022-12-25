@@ -10,11 +10,13 @@
             <hr>
             <p class="card-text">{{$article->description}}</p>
         </div>
-        <div class="card-footer">
-            <a href="{{ route('articles.showEdit',$article->id) }} " class="btn btn-success">Modifier</a>
-            <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Supprimer</button>
-            
-        </div>
+        @auth
+          <div class="card-footer">
+              <a href="{{ route('articles.showEdit',$article->id) }} " class="btn btn-success">Modifier</a>
+              <button type="button" class="btn btn-danger" data-bs-toggle="modal" data-bs-target="#exampleModal">Supprimer</button>
+              
+          </div>
+        @endauth
     </div>
 
   

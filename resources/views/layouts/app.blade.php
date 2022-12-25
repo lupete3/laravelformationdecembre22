@@ -32,7 +32,7 @@
                   @auth
                     <a href="{{ route('registration') }}" class="btn btn-outline-success">Déconnexion</a>
                     @else
-                      <a href="{{ route('registration') }}" class="btn btn-outline-success">Connexion</a>
+                      <a href="{{ route('login') }}" class="btn btn-outline-success">Connexion</a>
                   @endauth
                     
                 </form>

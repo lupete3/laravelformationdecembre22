@@ -20,20 +20,24 @@ Route::get('/', function () {
     return view('welcome');
 });
 
-// Route Register
-Route::get('/register', [UserController::class, 'showForm'])->name('registration');
-//Route pour enregistrer un user dans la base de donnees
-Route::post('/register', [UserController::class, 'saveUser'])->name('registration');
+// Routes accessibles si l'utilisateur n'est pas connecté
+Route::middleware('guest')->group(function(){
+  // Route Register
+  Route::get('/register', [UserController::class, 'showForm'])->name('registration');
+  //Route pour enregistrer un user dans la base de donnees
+  Route::post('/register', [UserController::class, 'saveUser'])->name('registration');
 
-//Route pour afficher le formulaire de connexion de l'utilisateur
-Route::get('/login', [UserController::class, 'showLoginForm'])->name('login');
+  //Route pour afficher le formulaire de connexion de l'utilisateur
+  Route::get('/login', [UserController::class, 'showLoginForm'])->name('login');
 
-//Route pour connecter un utilisateur
-Route::post('/login', [UserController::class, 'login'])->name('login');
+  //Route pour connecter un utilisateur
+  Route::post('/login', [UserController::class, 'login'])->name('login');
+});
 
+// Routes accessibles si l'utilisateur est connecté
 Route::middleware(['auth'])->group(function(){
   //Route de la session de l'utilisateur
-  Route::get('dashboard', [UserController::class, 'dashboard'])->name('dashboard');
+  Route::get('home', [UserController::class, 'dashboard'])->name('dashboard');
 
   //Routes Article
   Route::prefix('articles')->group(function(){
